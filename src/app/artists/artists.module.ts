@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {ArtistDetailsComponent} from "./artist-details/artist-details.component";
 import {ArtistsComponent} from "./artists/artists.component";
 import {RouterModule} from "@angular/router";
-import {AppModule} from "../app.module";
 
 
 const routes = [
@@ -21,8 +20,7 @@ const routes = [
   ],
     imports: [
         CommonModule,
-        RouterModule.forChild(routes),
-        AppModule,
+        RouterModule.forChild(routes)
     ]
 })
 export class ArtistsModule { }
