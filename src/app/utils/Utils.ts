@@ -2,10 +2,10 @@ export class Utils {
   static shortNumber(number: number): string {
 
     if (number > 1000 && number < 1000000) {
-      return Math.ceil(number / 1000) + "k";
+      return Math.floor(number / 1000) + "k";
     }
     if (number > 1000000) {
-      return Math.ceil(number / 1000000) + "m";
+      return Math.floor(number / 1000000) + "m";
     }
 
     return number + '';

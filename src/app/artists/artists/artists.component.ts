@@ -11,7 +11,7 @@ import {Utils} from "../../utils/Utils";
 export class ArtistsComponent implements OnInit {
 
   artists: Array<any> = [];
-  error: string | undefined;
+  error: string = '';
   isLoading = false;
   searchString = '';
 

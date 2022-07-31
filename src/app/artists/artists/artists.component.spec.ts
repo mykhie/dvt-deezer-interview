@@ -28,4 +28,19 @@ describe('ArtistsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it(`isLoading has default value`, () => {
+    expect(component.isLoading).toBeDefined();
+  });
+
+  it(`search has default value`, () => {
+    expect(component.searchString).toEqual('');
+  });
+
+  it(`error has default value`, () => {
+    expect(component.error).toEqual('');
+  });
+  it(`Should return an shorted string from a number`, () => {
+    expect(component.returnShortNumberString('2021')).toEqual('2k');
+  });
+
 });
