@@ -17,7 +17,7 @@
     </div>
     <div class="col-md-4 col-12">
       <h3>Top tracks</h3>
-      <div class="row" *ngIf="!isLoadingTracks">
+      <div class="row mx-2 " *ngIf="!isLoadingTracks">
 
         <div class="col-12 py-3 bg-white px-2">
           <ul class="list-group border-0">
@@ -43,8 +43,8 @@
             <img class="card-img-top card-img rounded-0" style="" [src]="album.cover_medium">
           </div>
           <div class="card-body col-12 px-3">
-            <h3>{{album?.title}}</h3>
-            <p class="card-text">
+            <h3 class="text-truncate text-nowrap ">{{album?.title}}</h3>
+            <p class="card-text text-muted">
               {{dateYear(album?.release_date)}}
             </p>
           </div>
