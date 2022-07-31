@@ -1,7 +1,28 @@
 <nav class="navbar navbar-light border-bottom">
-  <div class="px-4">
-    <a class="navbar-brand" href="#">
-      <img src="assets/images/logo.png" alt="" width="30" height="24">
-    </a>
-  </div>
+
+  <nav class="navbar navbar-light container">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="assets/images/logo.png" alt="" width="30" height="24">
+      </a>
+      <form class="d-flex col-5  float-start py-0">
+        <div class="input-group py-0">
+          <div class="input-group-prepend bg-white">
+            <span class="input-group-text bg-white"
+                  [style.margin-right]="'-3px'"
+                  id="basic-addon1">
+              <i class="bi bi-search"></i>
+            </span>
+          </div>
+          <input type="text" class="form-control"
+                 [(ngModel)]="searchString"
+                 [ngModelOptions]="{standalone:true}"
+                 (input)="searchArtist()"
+                 placeholder="Search artist" aria-label="Search artist "
+                 aria-describedby="basic-addon1">
+        </div>
+      </form>
+    </div>
+  </nav>
+
 </nav>

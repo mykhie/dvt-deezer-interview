@@ -20,7 +20,11 @@ export class ArtistsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getArtistSearchResults();
+    this.artistService.searchString.subscribe(e => {
+      this.searchString = e;
+      this.getArtistSearchResults();
+    })
+
   }
 
   returnShortNumberString(number) {

@@ -10,4 +10,7 @@ export class Utils {
 
     return number + '';
   }
+  static dateYear(date){
+    return new Date(date).getFullYear();
+  }
 }

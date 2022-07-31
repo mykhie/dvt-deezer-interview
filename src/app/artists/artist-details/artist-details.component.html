@@ -1,20 +1,54 @@
-<div class="container py-4 vh-100">
-  <div class="row vh-100">
-    <div class="col-md-8 col-12 picture-banner "
+<div class="container py-4 ">
+  <div class="row px-3">
+    <div class="col-md-8 p-2 col-12 picture-banner vh-100 rounded"
+         *ngIf="!isLoading"
          [ngStyle]="{'background-image' : artist?.picture_medium ? 'url('+artist?.picture_medium+')':''}"
     >
       <h1 class="align-middle">{{artist?.name}}</h1>
       <div>
-        {{artist.nb_fan}} Fans
+        {{returnShortNumberString(artist.nb_fan)}} Fans
       </div>
 
     </div>
+    <div class="text-center col-md-8 p-2 col-12" *ngIf="isLoading">
+      <div class="spinner-grow text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <div class="col-md-4 col-12">
-      <h4>Top tracks</h4>
-      <div class="col-12 py-3 bg-white px-2">
-        <ul class="list-group border-0">
-          <li class="list-group-item border-0 border-bottom rounded-0" *ngFor="let track of []">1. Music 100</li>
-        </ul>
+      <h3>Top tracks</h3>
+      <div class="row" *ngIf="!isLoadingTracks">
+
+        <div class="col-12 py-3 bg-white px-2">
+          <ul class="list-group border-0">
+            <li class="list-group-item border-0 border-bottom rounded-0"
+                *ngFor="let track of tracks">{{track.title}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center col-12 py-5 bg-white px-2" *ngIf="isLoadingTracks">
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pt-4 m-0 rounded" *ngIf="!isLoadingTracks">
+    <h3 class="py-3">Albums</h3>
+    <div class=" col-md-4 p-2" *ngFor="let album of albums">
+      <div class="card col-12 ">
+        <a [routerLink]="['/album',album?.id]" class=" text-decoration-none text-black">
+          <div class="border-bottom col-12 p-0 text-center">
+            <img class="card-img-top card-img rounded-0" style="" [src]="album.cover_medium">
+          </div>
+          <div class="card-body col-12 px-3">
+            <h3>{{album?.title}}</h3>
+            <p class="card-text">
+              {{dateYear(album?.release_date)}}
+            </p>
+          </div>
+        </a>
       </div>
     </div>
   </div>
