@@ -8,11 +8,10 @@ import {Router} from "@angular/router";
 export class HttpService {
 
   httpClient: HttpClient;
-  router: Router;
+
 
   constructor(injector: Injector) {
     this.httpClient = injector.get(HttpClient);
-    this.router = injector.get(Router);
   }
 
 

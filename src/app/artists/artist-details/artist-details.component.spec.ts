@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArtistDetailsComponent } from './artist-details.component';
+import {ArtistService} from "../../services/artists/artist.service";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {ActivatedRoute} from "@angular/router";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('ArtistDetailsComponent', () => {
   let component: ArtistDetailsComponent;
@@ -8,7 +12,9 @@ describe('ArtistDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArtistDetailsComponent ]
+      declarations: [ ArtistDetailsComponent ],
+      imports:[HttpClientTestingModule,RouterTestingModule],
+      providers : [ArtistService]
     })
     .compileComponents();
   });
