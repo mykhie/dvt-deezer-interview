@@ -10,11 +10,14 @@ const routes = [
     path: '', component: ArtistsComponent
   },
   {
-    path: '/:id', component: ArtistDetailsComponent
+    path: ':id', component: ArtistDetailsComponent
   },
 ];
 @NgModule({
-  declarations: [],
+  declarations: [
+    ArtistsComponent,
+    ArtistDetailsComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

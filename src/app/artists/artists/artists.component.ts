@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ArtistModel} from "../../models/artist.model";
+import {ArtistService} from "../../services/artists/artist.service";
+import {Utils} from "../../utils/Utils";
 
 @Component({
   selector: 'app-artists',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistsComponent implements OnInit {
 
-  constructor() { }
+  artists: Array<any> = [];
+  error: string | undefined;
+  isLoading = false;
+  searchString = '';
 
-  ngOnInit(): void {
+  constructor(public artistService: ArtistService) {
+
   }
 
+  ngOnInit(): void {
+    this.getArtistSearchResults();
+  }
+
+  returnShortNumberString(number) {
+    return Utils.shortNumber(number);
+  }
+
+  getArtistSearchResults() {
+
+    this.isLoading = true;
+
+    this.artistService.getSearchResults(this.searchString)
+      .subscribe(res => {
+        this.isLoading = false;
+        this.artists = res?.data;
+      }, error => {
+        this.isLoading = false;
+        this.error = error.message;
+      })
+  }
 }

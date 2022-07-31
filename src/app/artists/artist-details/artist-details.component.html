@@ -1,1 +1,21 @@
-<p>artist-details works!</p>
+<div class="container py-4 vh-100">
+  <div class="row vh-100">
+    <div class="col-md-8 col-12 picture-banner "
+         [ngStyle]="{'background-image' : artist?.picture_medium ? 'url('+artist?.picture_medium+')':''}"
+    >
+      <h1 class="align-middle">{{artist?.name}}</h1>
+      <div>
+        {{artist.nb_fan}} Fans
+      </div>
+
+    </div>
+    <div class="col-md-4 col-12">
+      <h4>Top tracks</h4>
+      <div class="col-12 py-3 bg-white px-2">
+        <ul class="list-group border-0">
+          <li class="list-group-item border-0 border-bottom rounded-0" *ngFor="let track of []">1. Music 100</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
