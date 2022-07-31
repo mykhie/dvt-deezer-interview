@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ActivatedRoute, Route, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 import {ArtistService} from "../../services/artists/artist.service";
 
 @Component({
@@ -7,15 +7,13 @@ import {ArtistService} from "../../services/artists/artist.service";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   searchString: any = '';
 
   constructor(public router: Router, public artistService: ArtistService) {
 
   }
 
-  ngOnInit(): void {
-  }
 
   searchArtist() {
     if (this.router.url !== '/artists') {

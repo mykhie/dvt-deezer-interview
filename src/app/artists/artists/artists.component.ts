@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ArtistModel} from "../../models/artist.model";
 import {ArtistService} from "../../services/artists/artist.service";
 import {Utils} from "../../utils/Utils";
 
@@ -11,9 +10,10 @@ import {Utils} from "../../utils/Utils";
 export class ArtistsComponent implements OnInit {
 
   artists: Array<any> = [];
-  error: string = '';
+  error = undefined;
   isLoading = false;
   searchString = '';
+  totalItems = 0;
 
   constructor(public artistService: ArtistService) {
 
@@ -31,17 +31,24 @@ export class ArtistsComponent implements OnInit {
     return Utils.shortNumber(number);
   }
 
-  getArtistSearchResults() {
+  getArtistSearchResults(index = 0) {
 
     this.isLoading = true;
-
-    this.artistService.getSearchResults(this.searchString)
+    this.error = undefined;
+    this.artistService.getSearchResults(this.searchString, index)
       .subscribe(res => {
         this.isLoading = false;
-        this.artists = res?.data;
+
+          this.artists = res?.data;
+        this.totalItems = res?.total;
       }, error => {
         this.isLoading = false;
+        console.log(error)
         this.error = error.message;
       })
+  }
+
+  moveToNextPage($event: number) {
+    this.getArtistSearchResults($event)
   }
 }

@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArtistsComponent } from './artists.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {Router, RouterModule} from "@angular/router";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('ArtistsComponent', () => {
   let component: ArtistsComponent;
@@ -13,7 +14,7 @@ describe('ArtistsComponent', () => {
       declarations: [ ArtistsComponent ],
       imports:[
         HttpClientTestingModule,
-        RouterModule
+        RouterTestingModule
       ]
     })
     .compileComponents();
@@ -36,11 +37,10 @@ describe('ArtistsComponent', () => {
     expect(component.searchString).toEqual('');
   });
 
-  it(`error has default value`, () => {
-    expect(component.error).toEqual('');
-  });
+
   it(`Should return an shorted string from a number`, () => {
     expect(component.returnShortNumberString('2021')).toEqual('2k');
   });
+
 
 });

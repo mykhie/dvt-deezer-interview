@@ -27,6 +27,12 @@
       </div>
     </div>
 
+    <div class="py-4" *ngIf="!isLoading && artists.length>0">
+      <app-paginate
+        (newIndex)="moveToNextPage($event)"
+        [totalItems]="totalItems"
+      ></app-paginate>
+    </div>
     <div class="text-center card text-muted bg-white p-4" *ngIf="!isLoading &&artists?.length ===0">
       <div>
         <i class="bi bi-info-circle"></i>
@@ -36,7 +42,7 @@
       </p>
     </div>
     <div class="text-center card text-muted bg-white p-4" *ngIf="isLoading">
-      <div class="text-center  p-2 col-12" >
+      <div class="text-center  p-2 col-12">
         <div class="spinner-grow text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>

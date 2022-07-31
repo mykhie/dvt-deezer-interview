@@ -62,7 +62,8 @@ export class ArtistDetailsComponent implements OnInit {
   returnShortNumberString(number) {
     return Utils.shortNumber(number);
   }
-  dateYear(date) {
+
+  dateYear(date): number {
     return Utils.dateYear(date);
   }
 }

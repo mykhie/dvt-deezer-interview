@@ -7,19 +7,24 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HeaderComponent} from './common/header/header.component';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
+import { PaginateComponent } from './common/paginate/paginate.component';
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent,
-    HeaderComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PageNotFoundComponent,
+        HeaderComponent,
+        PaginateComponent
+    ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        FormsModule,
+        HttpClientModule
+    ],
+    providers: [],
+    exports: [
+        PaginateComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

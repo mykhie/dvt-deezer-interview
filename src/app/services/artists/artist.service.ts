@@ -10,14 +10,14 @@ export class ArtistService extends HttpService {
 
   deezerUrl = 'https://cors-anywhere.herokuapp.com/https://api.deezer.com';
 
-  searchString:BehaviorSubject<string> = new BehaviorSubject('');
+  searchString: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor(injector: Injector) {
     super(injector)
   }
 
-  getSearchResults(search: string): any {
-    return this.httpClient.get(`${this.deezerUrl}/search?q=${search}`)
+  getSearchResults(search: string, index = 0): any {
+    return this.httpClient.get(`${this.deezerUrl}/search?q=${search}&index=${index}`)
       .pipe(map(res => {
         return res;
       }))
@@ -64,9 +64,10 @@ export class ArtistService extends HttpService {
       );
   }
 
-  returnSearchValue(){
+  returnSearchValue() {
     this.searchString.value;
   }
+
   sendSearchToArtists(search: string) {
 
     this.searchString.next(search);

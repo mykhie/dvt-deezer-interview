@@ -1,9 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ArtistDetailsComponent } from './artist-details.component';
+import {ArtistDetailsComponent} from './artist-details.component';
 import {ArtistService} from "../../services/artists/artist.service";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {ActivatedRoute} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
 
 describe('ArtistDetailsComponent', () => {
@@ -25,7 +24,19 @@ describe('ArtistDetailsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+
+  it('should create component', () => {
     expect(component).toBeTruthy();
+  });
+  it(`isLoading has default value`, () => {
+    expect(component.isLoading).toBeDefined();
+  });
+
+  it(`Artist tracks has default value`, () => {
+    expect(component.tracks).toEqual([]);
+  });
+
+  it(`error has default value`, () => {
+    expect(component.error).toBeDefined('');
   });
 });
