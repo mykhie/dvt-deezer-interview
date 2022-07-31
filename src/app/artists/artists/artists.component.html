@@ -28,10 +28,19 @@
     </div>
 
     <div class="py-4" *ngIf="!isLoading && artists.length>0">
-      <app-paginate
-        (newIndex)="moveToNextPage($event)"
-        [totalItems]="totalItems"
-      ></app-paginate>
+      <div class="text-center">
+        <div class="btn btn-primary mx-2"
+             *ngIf="currentIndex>24"
+             (click)="moveToNextPage(0)"
+        >Previous page
+        </div>
+
+        <div class="btn btn-primary"
+             (click)="moveToNextPage(1)"
+
+        >Next page
+        </div>
+      </div>
     </div>
     <div class="text-center card text-muted bg-white p-4" *ngIf="!isLoading &&artists?.length ===0">
       <div>

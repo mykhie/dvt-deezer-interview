@@ -14,6 +14,7 @@ export class ArtistsComponent implements OnInit {
   isLoading = false;
   searchString = '';
   totalItems = 0;
+  currentIndex = 0;
 
   constructor(public artistService: ArtistService) {
 
@@ -39,7 +40,7 @@ export class ArtistsComponent implements OnInit {
       .subscribe(res => {
         this.isLoading = false;
 
-          this.artists = res?.data;
+        this.artists = res?.data;
         this.totalItems = res?.total;
       }, error => {
         this.isLoading = false;
@@ -48,7 +49,14 @@ export class ArtistsComponent implements OnInit {
       })
   }
 
-  moveToNextPage($event: number) {
-    this.getArtistSearchResults($event)
+  moveToNextPage( move = 1) {
+
+    if (this.currentIndex >= 25 && move === 0) {
+      this.currentIndex += -25;
+    }
+    if (this.currentIndex <= this.totalItems && move === 1) {
+      this.currentIndex += 25;
+    }
+    this.getArtistSearchResults(this.currentIndex);
   }
 }
